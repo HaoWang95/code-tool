@@ -1,6 +1,8 @@
 # Getting Started
 
-First, run the development server:
+First, configure the aws access key and aws access token in `.env.local`
+
+Then, run the development server:
 
 ```bash
 npm run dev
