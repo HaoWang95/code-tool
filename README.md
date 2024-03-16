@@ -1,6 +1,6 @@
 # Getting Started
 
-First, configure the aws access key and aws access token in `.env.local`
+**First, configure the aws access key and aws access token in `.env.local`**
 
 Then, run the development server:
 

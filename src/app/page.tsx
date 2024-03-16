@@ -1,27 +1,48 @@
-import ModelCardList from "./ui/ModelList";
+import Head from "next/head";
+import { AppDescription, AppTitle, Section } from "./lib/constant";
 import Link from "next/link";
-import { ModelCardListSkeleton } from "@/app/ui/Skeleton";
-import { Suspense } from "react";
-import CodeToolLogo from "./ui/logo/CodeToolLogo";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <main
-      className="flex min-h-screen flex-col p-6"
-      // className="flex min-h-screen flex-col items-center justify-between p-24"
-    >
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-green-600 p-4 md:h-22">
-        <Link href={"/"}>
-          <CodeToolLogo />
-        </Link>
-      </div>
+    <>
+      <Head>
+        <title>{AppTitle}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <Suspense
-        key={"models-loading"}
-        fallback={<ModelCardListSkeleton count={12} />}
-      >
-        <ModelCardList />
-      </Suspense>
-    </main>
+      {/* Hero Section with Gradient */}
+      <section className="text-center py-20 bg-gradient-to-r from-teal-300 via-teal-400 to-teal-600 text-white">
+        <h1 className="text-5xl font-bold mb-4">{AppTitle}</h1>
+        <p className="text-lg mb-8">{AppDescription}</p>
+        <Link
+          href={"/models"}
+          className="bg-white hover:bg-gray-100 text-teal-600 font-bold py-2 px-4 rounded"
+        >
+          Get Started
+        </Link>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+            Features
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {Section.map((subSection) => (
+              <div key={subSection.feature} className="text-center">
+                <h3 className="text-xl mb-2">{subSection.feature}</h3>
+                <p className="text-gray-600">{subSection.Description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer with Gradient */}
+      <footer className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white text-center py-4">
+        © {new Date().getFullYear()} Your Company Name. All rights reserved.
+      </footer>
+    </>
   );
 }
