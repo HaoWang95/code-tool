@@ -5,7 +5,7 @@ export default function CodeToolLogo() {
   return (
     <div className={`${lusitana.className} flex flex-row items-center leading-none text-white`}>
       <CommandLineIcon className="w-12 h-12" />
-      <p className="text-[40px]">Code Tool</p>
+      <p className="text-[30px] text-nowrap">Code Tool</p>
     </div>
   );
 }
