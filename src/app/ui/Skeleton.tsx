@@ -24,13 +24,40 @@ export function ModelCardSkeleton() {
   );
 }
 
-export function ModelCardListSkeleton({ count = 12 }) {
+const ModelCardSkeletonLoading = () => {
+  const onhoverStyle =
+    "rounded-lg overflow-hidden shadow-lg bg-white p-4 transition duration-200 ease-in-out transform";
+  return (
+    <div className={onhoverStyle}>
+      {/* Skeleton for Model Name */}
+      <div className="animate-pulse">
+        <div className="h-6 bg-gray-300 rounded mb-4"></div>{" "}
+        {/* Placeholder for the model name */}
+        <div className="space-y-3">
+          {Array.from({ length: 7 }).map((_, index) => (
+            <div key={index} className="flex justify-between items-center">
+              {/* Each label and value pair */}
+              <div className="w-1/3 bg-gray-200 h-4 rounded"></div>{" "}
+              {/* Placeholder for the label */}
+              <div className="w-1/2 bg-gray-200 h-4 rounded"></div>{" "}
+              {/* Placeholder for the value */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export function ModelCardListSkeleton({ count = 6 }) {
   // Default to 5 skeletons
   return (
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {Array.from({ length: count }).map((_, index) => (
-          <ModelCardSkeleton key={index} />
+          <>
+            <ModelCardSkeletonLoading key={index} />
+          </>
         ))}
       </div>
     </div>

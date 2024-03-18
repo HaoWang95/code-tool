@@ -20,3 +20,10 @@ export const Section = [
 ];
 
 export const AWS_REGION = "us-east-1";
+
+export const COMMON_TEXT_COLOR = {
+  GREEN: "text-green-500",
+  BLUE: "text-blue-500",
+  INDIGO: "text-indigo-500",
+  TEAL: "text-teal-500",
+};

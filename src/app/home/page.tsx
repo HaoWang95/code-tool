@@ -1,7 +1,11 @@
+import { lusitana } from "../ui/font";
+
 export default function HomePage() {
   return (
-    <main>
-      <p>Home Page</p>
-    </main>
+    <div className="w-full">
+      <div className="flex w-full items-center justify-between">
+        <h1 className={`${lusitana.className} text-2xl`}>Home</h1>
+      </div>
+    </div>
   );
 }
