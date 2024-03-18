@@ -18,3 +18,5 @@ export const Section = [
     Description: "Mode examples",
   },
 ];
+
+export const AWS_REGION = "us-east-1";

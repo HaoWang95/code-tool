@@ -2,6 +2,7 @@ import {
   BedrockClient,
   ListFoundationModelsCommand,
 } from "@aws-sdk/client-bedrock";
+import { AWS_REGION } from "./constant";
 
 /**
  * Integrate with aws bedrock client to fetch summaries of foundation models
@@ -10,7 +11,7 @@ import {
 export const bedrockClientListModels = async () => {
   try {
     const bedrockClient = new BedrockClient({
-      region: "us-east-1",
+      region: AWS_REGION,
       credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "",
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "",
@@ -30,5 +31,12 @@ export const bedrockClientListModels = async () => {
     };
   } catch (error) {
     throw error;
+  }
+};
+
+export const invokeBedrockRuntime = async () => {
+  try {
+  } catch (err) {
+    throw err;
   }
 };

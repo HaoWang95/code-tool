@@ -1,18 +1,19 @@
+import { FoundationModelSummary } from "@aws-sdk/client-bedrock";
 import { bedrockClientListModels } from "../lib/action";
 import { ITEMS_PER_PAGE } from "../lib/utils";
 import ModelCard from "./ModelCard";
 import Pagination from "./Pagination";
 
 export default async function ModelCardList({
-  currentPage = 1,
+  models
 }: {
-  currentPage: number;
+    models: FoundationModelSummary[]  
 }) {
-  const modelSummaries = await bedrockClientListModels();
-  const models = modelSummaries.modelSummaries;
-  const totalPages = models?.length
-    ? Math.ceil(models.length / ITEMS_PER_PAGE)
-    : 0;
+//   const modelSummaries = await bedrockClientListModels();
+//   const models = modelSummaries.modelSummaries;
+//   const totalPages = models?.length
+//     ? Math.ceil(models.length / ITEMS_PER_PAGE)
+//     : 0;
 
   return (
     <div className="container mx-auto p-4">
@@ -21,9 +22,9 @@ export default async function ModelCardList({
           <ModelCard key={`${model.modelName}`} data={model} />
         ))}
       </div>
-      <div className="mt-4 flex w-full justify-center">
+      {/* <div className="mt-4 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
-      </div>
+      </div> */}
     </div>
   );
 }
