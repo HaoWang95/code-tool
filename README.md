@@ -1,17 +1,18 @@
 # Getting Started
 
-**First, configure the aws access key and aws access token in `.env.local`**
+To install dependencies: `npm install`
+
+**First, configure the aws access key and aws access token in `.env.local`** as the following format:
+
+```env
+AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
+```
 
 Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

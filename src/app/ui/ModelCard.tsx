@@ -41,8 +41,8 @@ const ModelCard = ({ data }: { data: FoundationModelSummary }) => {
             label: "Streaming Supported",
             value: data.responseStreamingSupported ? "Yes" : "No",
           },
-        ].map(({ label, value }) => (
-          <div key={label} className="py-2 flex justify-between items-center">
+        ].map(({ label, value }, index) => (
+          <div key={`${label}-${index}`} className="py-2 flex justify-between items-center">
             <span className={`font-semibold ${COMMON_TEXT_COLOR.TEAL}`}>
               {label}:
             </span>
