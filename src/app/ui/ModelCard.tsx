@@ -20,7 +20,7 @@ const ModelCard = ({ data }: { data: FoundationModelSummary }) => {
             label: "Provider",
             value: data.providerName,
           },
-          { label: "Model ID", value: data.modelId },
+          { label: "ID", value: data.modelId },
           {
             label: "Status",
             value: data.modelLifecycle?.status,

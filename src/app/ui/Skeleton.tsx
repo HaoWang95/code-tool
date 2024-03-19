@@ -12,7 +12,7 @@ export function ModelCardSkeleton() {
             index // For other key-value pairs
           ) => (
             <div
-              key={index}
+              key={`ModelCardSkeleton-item-${index}`}
               className={`h-4 bg-gray-200 rounded mb-1 ${
                 index % 2 === 0 ? "w-5/12" : "w-7/12"
               }`}
@@ -35,11 +35,20 @@ const ModelCardSkeletonLoading = () => {
         {/* Placeholder for the model name */}
         <div className="space-y-3">
           {Array.from({ length: 7 }).map((_, index) => (
-            <div key={index} className="flex justify-between items-center">
+            <div
+              key={`model-card-${index}`}
+              className="flex justify-between items-center"
+            >
               {/* Each label and value pair */}
-              <div className="w-1/3 bg-gray-200 h-4 rounded"></div>{" "}
+              <div
+                key={`model-card-${index}-first`}
+                className="w-1/3 bg-gray-200 h-4 rounded"
+              ></div>{" "}
               {/* Placeholder for the label */}
-              <div className="w-1/2 bg-gray-200 h-4 rounded"></div>{" "}
+              <div
+                key={`model-card-${index}-second`}
+                className="w-1/2 bg-gray-200 h-4 rounded"
+              ></div>{" "}
               {/* Placeholder for the value */}
             </div>
           ))}
@@ -56,7 +65,7 @@ export function ModelCardListSkeleton({ count = 6 }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {Array.from({ length: count }).map((_, index) => (
           <>
-            <ModelCardSkeletonLoading key={index} />
+            <ModelCardSkeletonLoading key={`modelcard-loading-${index}`} />
           </>
         ))}
       </div>

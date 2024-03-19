@@ -29,8 +29,8 @@ export default function Home() {
             Features
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {Section.map((subSection) => (
-              <div key={subSection.feature} className="text-center">
+            {Section.map((subSection, index) => (
+              <div key={`${subSection.feature}-${index}`} className="text-center">
                 <h3 className="text-xl mb-2">{subSection.feature}</h3>
                 <p className="text-gray-600">{subSection.Description}</p>
               </div>

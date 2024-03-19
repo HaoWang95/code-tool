@@ -1,6 +1,6 @@
 import { lusitana } from "../ui/font";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
