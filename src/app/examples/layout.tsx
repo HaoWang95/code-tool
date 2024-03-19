@@ -1,7 +1,7 @@
 import React from "react";
 import MainLayout from "../ui/layout/MainLayout";
 
-export default function ToolsLayout({
+export default function ExamplesLayout({
   children,
 }: {
   children: React.ReactNode;

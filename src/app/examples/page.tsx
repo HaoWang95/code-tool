@@ -1,6 +1,6 @@
 import { lusitana } from "../ui/font";
 
-export default function ToolsPage() {
+export default function ExamplesPage() {
   return (
     <main>
       <p className={lusitana.className}>ToolsPage</p>

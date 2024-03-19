@@ -7,6 +7,7 @@ import { COMMON_TEXT_COLOR } from "../lib/constant";
  * @returns
  */
 const ModelCard = ({ data }: { data: FoundationModelSummary }) => {
+  const keyPrefix = data.modelId;
   const onhoverStyle =
     "rounded-lg overflow-hidden shadow-lg bg-white p-4 transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-xl";
   return (
@@ -42,7 +43,7 @@ const ModelCard = ({ data }: { data: FoundationModelSummary }) => {
             value: data.responseStreamingSupported ? "Yes" : "No",
           },
         ].map(({ label, value }, index) => (
-          <div key={`${label}-${index}`} className="py-2 flex justify-between items-center">
+          <div key={`${keyPrefix}-${label}-${index}`} className="py-2 flex justify-between items-center">
             <span className={`font-semibold ${COMMON_TEXT_COLOR.TEAL}`}>
               {label}:
             </span>

@@ -1,15 +1,15 @@
-import Head from "next/head";
 import { AppDescription, AppTitle, Section } from "./lib/constant";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: AppTitle,
+  description: AppDescription
+}
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>{AppTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/* Hero Section with Gradient */}
       <section className="text-center py-20 bg-gradient-to-r from-teal-300 via-teal-400 to-teal-600 text-white">
         <h1 className="text-5xl font-bold mb-4">{AppTitle}</h1>

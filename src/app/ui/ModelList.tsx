@@ -27,7 +27,7 @@ export default function ModelCardList({
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {displayedModels?.map((model, index) => (
-          <ModelCard key={`${model.modelName}-${index}`} data={model} />
+          <ModelCard key={`${model.modelId}-${index}`} data={model} />
         ))}
       </div>
       <div className="mt-4 flex w-full justify-center">

@@ -16,7 +16,7 @@ const links = [
     href: "/models",
     icon: InformationCircleIcon,
   },
-  { name: "Tools", href: "/tools", icon: CommandLineIcon },
+  { name: "Examples", href: "/examples", icon: CommandLineIcon },
 ];
 
 export default function NavLinks() {

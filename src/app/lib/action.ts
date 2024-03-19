@@ -28,6 +28,7 @@ export const bedrockClientListModels = async () => {
     return {
       metadata: result.$metadata,
       modelSummaries: result.modelSummaries,
+      numberOfModels: result.modelSummaries?.length || 0
     };
   } catch (error) {
     throw error;
