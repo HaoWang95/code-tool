@@ -1,6 +1,7 @@
 import { AppDescription, AppTitle, Section } from "./lib/constant";
 import Link from "next/link";
 import { Metadata } from "next";
+import AppFooter from "./ui/footer";
 
 export const metadata: Metadata = {
   title: AppTitle,
@@ -40,9 +41,7 @@ export default function Home() {
       </section>
 
       {/* Footer with Gradient */}
-      <footer className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white text-center py-4">
-        © {new Date().getFullYear()} Your Company Name. All rights reserved.
-      </footer>
+      <AppFooter />
     </>
   );
 }
