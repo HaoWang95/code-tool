@@ -1,5 +1,5 @@
 const CodeSnippetSkeleton = () => (
-  <div className="animate-pulse flex flex-col space-y-2 w-full max-w-lg">
+  <div className="animate-pulse flex flex-col space-y-2 w-full max-w-lg mt-4 p-4">
     <div className="h-6 bg-gray-300 rounded"></div>{" "}
     {/* Simulate a line of code */}
     {Array.from({ length: 5 }).map((_, index) => (

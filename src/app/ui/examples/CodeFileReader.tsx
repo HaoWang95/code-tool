@@ -6,11 +6,14 @@ import {
   BedrockRuntimeClient,
   InvokeModelCommand,
 } from "@aws-sdk/client-bedrock-runtime";
-import React, { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import CodeSnippetSkeleton from "./CodeSkeleton";
 
 const CodeFileReader = () => {
   const [codeContent, setCodeContent] = useState<string>("");
-  const [codeCheckResult, setCodeCheckResult] = useState<string>();
+  const [codeCheckResult, setCodeCheckResult] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
@@ -27,36 +30,33 @@ const CodeFileReader = () => {
     }
   };
 
-  const codeSubmit = useCallback(
-    async (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (codeContent && codeContent.trim().length > 0) {
-        console.log("code submit!");
-        const bedrockRuntime = new BedrockRuntimeClient({
-          region: AWS_REGION,
-          credentials: {
-            accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID || "",
-            secretAccessKey:
-              process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY || "",
-          },
-        });
+  const codeSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (codeContent && codeContent.trim().length > 0) {
+      const bedrockRuntime = new BedrockRuntimeClient({
+        region: AWS_REGION,
+        credentials: {
+          accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY || "",
+        },
+      });
 
-        const prompt = prepareModelRequestClaude2(codeContent);
-        const invokeModel = new InvokeModelCommand(prompt);
-        const response = await bedrockRuntime.send(invokeModel);
+      const prompt = prepareModelRequestClaude2(codeContent);
+      const invokeModel = new InvokeModelCommand(prompt);
+      await bedrockRuntime.send(invokeModel).then((response) => {
         const responseJsonString = new TextDecoder().decode(response.body);
         const parsedResponse = JSON.parse(responseJsonString);
         setCodeCheckResult(parsedResponse["completion"]);
-      }
-    },
-    [codeContent]
-  );
+        setLoading(false);
+      });
+    }
+  };
 
   return (
     <div className="p-4 flex flex-col items-center justify-center">
       <div className="w-full max-w-md">
         <form onSubmit={codeSubmit}>
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600">
             Upload a code file
             <input
               type="file"
@@ -68,6 +68,7 @@ const CodeFileReader = () => {
             />
           </label>
           <button
+            onClick={() => setLoading(true)}
             type="submit"
             className="mt-4 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
@@ -75,24 +76,22 @@ const CodeFileReader = () => {
           </button>
         </form>
       </div>
-      {/* {language.trim().length > 0 && (
-        <div className="my-4 p-2 bg-teal-100 rounded-lg border border-teal-400">
-          <p className="text-teal-800 font-semibold">
-            Detected Language: {language.toUpperCase()}
-          </p>
-        </div>
-      )} */}
 
-      {codeContent && (
-        <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto text-sm">
-          <code>{codeContent}</code>
-        </pre>
-      )}
-      {codeCheckResult && (
-        <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto text-sm">
-          <code>{codeCheckResult}</code>
-        </pre>
-      )}
+      <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
+        {/* refactor in to one component */}
+        {codeContent && (
+          <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto text-sm whitespace-pre-wrap h-96 overflow-y-auto">
+            <code>{codeContent}</code>
+          </pre>
+        )}
+        {codeCheckResult && !loading && (
+          <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto text-sm whitespace-pre-wrap h-96 overflow-y-auto">
+            <code>{codeCheckResult}</code>
+          </pre>
+        )}
+      </div>
+
+      {loading && <CodeSnippetSkeleton />}
     </div>
   );
 };
