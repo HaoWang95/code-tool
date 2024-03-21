@@ -27,6 +27,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Prototype landing page
 
+A further decoration of the landing page is required.
+
 ![alt text](description_image/landing.png)
 
 ## Gen AI model list
@@ -37,10 +39,17 @@ So far only AWS bedrock models are integrated and listed. But considering to inc
 
 ## Click examples to check out code tools
 
-As a quick prototype, a claude2 model integration is provided for duplicate code checking. The feature can be extended to use selected modelss
+As a quick prototype, a claude2 model integration is provided for duplicate code checking. The feature can be extended to use selected models. Also, further implementation with more models integrated is required
 
 ![alt text](description_image/temp_examples.png)
 
 A quick execution result is as below:
 
 ![alt text](description_image/temp_duplicate_code.png)
+
+## Actions
+
+- Refactoring of code bases during impl
+- Unit testing update needs to be initiated
+- Consider a quick login
+- Deployment
