@@ -31,4 +31,24 @@ export function generatePagination(currentPage: number, totalPages: number) {
   ];
 }
 
+const ClaudeModelId = "anthropic.claude-v2";
+const dataType = "application/json";
+
+const prompt = "Human: Please find the duplicate code snippet in the code:\n";
+
+export const prepareModelRequestClaude2 = (code: string) => {
+  return {
+    modelId: ClaudeModelId,
+    contentType: dataType,
+    accept: dataType,
+    body: JSON.stringify({
+      prompt: `${prompt}${code}\n\n Assistant:`,
+      max_tokens_to_sample: 3000,
+      temperature: 0.5,
+      top_k: 250,
+      top_p: 1,
+    }),
+  };
+};
+
 export const ITEMS_PER_PAGE = 6;

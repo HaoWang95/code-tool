@@ -7,6 +7,10 @@ To install dependencies: `npm install`
 ```env
 AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
+
+<!-- For key usage on client components, not recommended and needs to be refactored -->
+NEXT_PUBLIC_AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
+NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
 ```
 
 Then, run the development server:

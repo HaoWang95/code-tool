@@ -1,7 +1,7 @@
-import CodeFileReader from "@/app/ui/examples/CodeContentReader";
+import CodeFileReader from "@/app/ui/examples/CodeFileReader";
 import { lusitana } from "@/app/ui/font";
 
-export default function DuplicateCodePage() {
+export default async function DuplicateCodePage({params}: {params: string}) {
   return (
     <div className="w-full">
       <div>

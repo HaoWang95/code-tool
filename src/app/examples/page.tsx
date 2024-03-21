@@ -3,7 +3,7 @@ import ExampleCard from "../ui/examples/ExampleCard";
 import { lusitana } from "../ui/font";
 import clsx from "clsx";
 
-export default function ExamplesPage() {
+export default async function ExamplesPage() {
   return (
     <div className="w-full">
       <h1 className={clsx(lusitana.className, "text-xl md:text-2xl mb-4")}>

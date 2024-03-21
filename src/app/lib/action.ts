@@ -1,8 +1,10 @@
+"use server";
 import {
   BedrockClient,
   ListFoundationModelsCommand,
 } from "@aws-sdk/client-bedrock";
 import { AWS_REGION } from "./constant";
+import { FormEvent } from "react";
 
 /**
  * Integrate with aws bedrock client to fetch summaries of foundation models
@@ -28,16 +30,14 @@ export const bedrockClientListModels = async () => {
     return {
       metadata: result.$metadata,
       modelSummaries: result.modelSummaries,
-      numberOfModels: result.modelSummaries?.length || 0
+      numberOfModels: result.modelSummaries?.length || 0,
     };
   } catch (error) {
     throw error;
   }
 };
 
-export const invokeBedrockRuntime = async () => {
-  try {
-  } catch (err) {
-    throw err;
-  }
-};
+export const checkCode = async (formData: FormData) => {
+  const file = formData.get("codeFile");
+  console.log(file);
+}
