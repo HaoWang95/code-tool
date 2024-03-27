@@ -79,7 +79,7 @@ const CodeFileReader = () => {
 
       <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
         {/* refactor in to one component */}
-        {codeContent && (
+        {codeContent && !loading && (
           <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto min-w-full text-sm whitespace-pre-wrap h-96 overflow-y-auto">
             <code>{codeContent}</code>
           </pre>

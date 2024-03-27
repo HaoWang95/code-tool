@@ -4,7 +4,6 @@ import {
   ListFoundationModelsCommand,
 } from "@aws-sdk/client-bedrock";
 import { AWS_REGION } from "./constant";
-import { FormEvent } from "react";
 
 /**
  * Integrate with aws bedrock client to fetch summaries of foundation models
