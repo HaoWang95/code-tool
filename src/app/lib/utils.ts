@@ -34,16 +34,19 @@ export function generatePagination(currentPage: number, totalPages: number) {
 const ClaudeModelId = "anthropic.claude-v2";
 const dataType = "application/json";
 
-const prompt = "Human: Please find the duplicate code snippet in the code:\n";
+export const promptClaude2Default =
+  "Human: Please find the potential duplicate code snippet in the code:\n";
+export const promptClaude2MultipleFiles =
+  "Human: please find the potential duplicate code snippet that can be extracted in the code files below, I have provided the file name, also please briefly summarize if the code looks OK:\n";
 
-export const prepareModelRequestClaude2 = (code: string) => {
+export const prepareModelRequestClaude2 = (code: string, prompt?: string) => {
   return {
     modelId: ClaudeModelId,
     contentType: dataType,
     accept: dataType,
     body: JSON.stringify({
-      prompt: `${prompt}${code}\n\n Assistant:`,
-      max_tokens_to_sample: 3000,
+      prompt: `${prompt ?? promptClaude2Default}${code}\n\n Assistant:`,
+      max_tokens_to_sample: 5000,
       temperature: 0.5,
       top_k: 250,
       top_p: 1,

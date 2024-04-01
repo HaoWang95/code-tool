@@ -13,6 +13,7 @@ const CodeFileReader = () => {
   const [codeContent, setCodeContent] = useState<string>("");
   const [codeCheckResult, setCodeCheckResult] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const isDisabled = codeContent.trim().length === 0;
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -68,6 +69,7 @@ const CodeFileReader = () => {
             />
           </label>
           <button
+            disabled={isDisabled}
             onClick={() => setLoading(true)}
             type="submit"
             className="mt-6 px-4 py-2 bg-teal-500 text-white text-sm font-semibold h-10 rounded-lg hover:bg-teal-700 transition-colors"
