@@ -8,7 +8,7 @@ To install dependencies: `npm install`
 AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
 
-<!-- For key usage on client components, not recommended and needs to be refactored -->
+<!-- For key usage on client components, not recommended and needs to be refactored into backend serverless functions-->
 NEXT_PUBLIC_AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
 NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
 ```
@@ -19,11 +19,13 @@ Then, run the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) or other ports(next.js will find a suitable port if 3000 is already taken) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## AWS GenAI
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Since the project is initialized, the models provided by AWS is constantly increasing, please note that as more models are included into AWS BedRock, there are other potential samples we can build to prototype/showcase using these GenAI models.
+
+If prototyping a web app doesn't feel like a straightforward approach, using `python boto3` is one of the most easist way that can get results very quickly. Also, it's easy to integrate boto3 into a serverless runtime.
 
 ## Prototype landing page
 

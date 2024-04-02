@@ -8,6 +8,7 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import CodeSnippetSkeleton from "./CodeSkeleton";
+import DuplicateCodeResult from "./DuplicateCodeResult";
 
 const CodeFileReader = () => {
   const [codeContent, setCodeContent] = useState<string>("");
@@ -81,15 +82,9 @@ const CodeFileReader = () => {
 
       <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
         {/* refactor in to one component */}
-        {codeContent && !loading && (
-          <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto min-w-full text-sm whitespace-pre-wrap h-96 overflow-y-auto">
-            <code>{codeContent}</code>
-          </pre>
-        )}
+        {codeContent && !loading && <DuplicateCodeResult code={codeContent} />}
         {codeCheckResult && !loading && (
-          <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg overflow-x-auto min-w-full text-sm whitespace-pre-wrap h-96 overflow-y-auto">
-            <code>{codeCheckResult}</code>
-          </pre>
+          <DuplicateCodeResult code={codeCheckResult} />
         )}
       </div>
 

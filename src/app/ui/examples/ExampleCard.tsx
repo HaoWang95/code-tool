@@ -15,8 +15,8 @@ export default function ExampleCard({
   return (
     <div className="flex">
       <div className="w-full max-w-xs rounded overflow-hidden shadow-lg bg-white p-6 m-4 flex flex-col justify-between transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-xl">
-        <div className="flex space-x-4 items-center mb-4">
-          <div className="flex-shrink-0">{icon}</div>
+        <div className="flex space-x-4 mb-4">
+          <div className="flex-shrink-0 w-8 mt-2">{icon}</div>
           <div className="flex-1">
             <h2 className="font-bold text-xl mb-2">{title}</h2>
             <p className="text-gray-700 text-base">{content}</p>

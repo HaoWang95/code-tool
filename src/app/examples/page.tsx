@@ -18,8 +18,8 @@ export default async function ExamplesPage() {
           linkTo="/examples/duplicate"
         />
         <ExampleCard
-          title="Code comment"
-          content="Quick code analysis and explain for your code snippet"
+          title="Code check for 2 files"
+          content="Quick code analysis if you want to find duplicate code snippet or refactoring suggestions among two files"
           icon={<BiCommentEdit className="h-6 w-6" />}
           linkTo="/examples/comment"
         />
