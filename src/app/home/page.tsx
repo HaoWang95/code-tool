@@ -1,8 +1,11 @@
 import { CpuChipIcon } from "@heroicons/react/24/outline";
 import { lusitana } from "../ui/font";
 import { InformationCard } from "../ui/home/InformationCard";
+import { bedrockClientListModels } from "../lib/action";
 
 export default async function HomePage() {
+  // total number of AWS GenAI models
+  const { numberOfModels } = await bedrockClientListModels();
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -10,16 +13,18 @@ export default async function HomePage() {
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <InformationCard
+          key={`aws-infocard`}
           title={"AWS"}
-          value={"12"}
+          value={numberOfModels.toString()}
           icon={<CpuChipIcon className="h-5 w-5 text-gray-700" />}
         />
         <InformationCard
+          key={`openai-infocard`}
           title={"Open AI"}
           value={"12"}
           icon={<CpuChipIcon className="h-5 w-5 text-gray-700" />}
         />
-        <InformationCard
+        {/* <InformationCard
           title={"Azure"}
           value={"12"}
           icon={<CpuChipIcon className="h-5 w-5 text-gray-700" />}
@@ -28,7 +33,7 @@ export default async function HomePage() {
           title={"Google Cloud"}
           value={"12"}
           icon={<CpuChipIcon className="h-5 w-5 text-gray-700" />}
-        />
+        /> */}
       </div>
     </div>
   );

@@ -1,5 +1,8 @@
 "use server";
-import { ListFoundationModelsCommand } from "@aws-sdk/client-bedrock";
+import {
+  GetFoundationModelCommand,
+  ListFoundationModelsCommand,
+} from "@aws-sdk/client-bedrock";
 import { GlobalBedrockClient } from "./client";
 
 /**
@@ -8,13 +11,6 @@ import { GlobalBedrockClient } from "./client";
  */
 export const bedrockClientListModels = async () => {
   try {
-    // const bedrockClient = new BedrockClient({
-    //   region: AWS_REGION,
-    //   credentials: {
-    //     accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "",
-    //     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "",
-    //   },
-    // });
     const input = {
       // byProvider: 'STRING_VALUE',
       // byCustomizationType: 'FINE_TUNING' || 'CONTINUED_PRE_TRAINING',
@@ -33,7 +29,18 @@ export const bedrockClientListModels = async () => {
   }
 };
 
-export const checkCode = async (formData: FormData) => {
-  const file = formData.get("codeFile");
-  console.log(file);
+export const bedrockClientGetModelDetail = async ({
+  modelId,
+}: {
+  modelId: string;
+}) => {
+  try {
+    const modelDetailCommand = new GetFoundationModelCommand({
+      modelIdentifier: modelId,
+    });
+    const result = await GlobalBedrockClient.send(modelDetailCommand);
+    return result;
+  } catch (error) {
+    throw error;
+  }
 };
