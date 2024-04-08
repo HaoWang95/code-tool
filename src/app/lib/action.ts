@@ -3,7 +3,7 @@ import {
   GetFoundationModelCommand,
   ListFoundationModelsCommand,
 } from "@aws-sdk/client-bedrock";
-import { GlobalBedrockClient } from "./client";
+import { GlobalBedrockClient, GlobalOpenAIClient } from "./client";
 
 /**
  * Integrate with aws bedrock client to fetch summaries of foundation models
@@ -40,6 +40,18 @@ export const bedrockClientGetModelDetail = async ({
     });
     const result = await GlobalBedrockClient.send(modelDetailCommand);
     return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const openAIListModels = async () => {
+  try {
+    const openAIModels = await GlobalOpenAIClient.models.list();
+    return {
+      models: openAIModels.data,
+      numberOfModelsOpenAI: openAIModels.data.length,
+    };
   } catch (error) {
     throw error;
   }

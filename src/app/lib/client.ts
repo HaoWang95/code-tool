@@ -1,6 +1,7 @@
 import { BedrockClient } from "@aws-sdk/client-bedrock";
 import { AWS_REGION } from "./constant";
 import { BedrockRuntimeClient } from "@aws-sdk/client-bedrock-runtime";
+import OpenAI from "openai";
 
 const GlobalBedrockClient = new BedrockClient({
   region: AWS_REGION,
@@ -18,4 +19,8 @@ const GlobalBedrockRuntimeClient = new BedrockRuntimeClient({
   },
 });
 
-export { GlobalBedrockClient, GlobalBedrockRuntimeClient };
+const GlobalOpenAIClient = new OpenAI({
+  apiKey: process.env.OPENAI_SECRET_KEY,
+});
+
+export { GlobalBedrockClient, GlobalBedrockRuntimeClient, GlobalOpenAIClient };

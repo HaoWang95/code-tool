@@ -1,11 +1,12 @@
 import { CpuChipIcon } from "@heroicons/react/24/outline";
 import { lusitana } from "../ui/font";
 import { InformationCard } from "../ui/home/InformationCard";
-import { bedrockClientListModels } from "../lib/action";
+import { bedrockClientListModels, openAIListModels } from "../lib/action";
 
 export default async function HomePage() {
   // total number of AWS GenAI models
   const { numberOfModels } = await bedrockClientListModels();
+  const { numberOfModelsOpenAI } = await openAIListModels();
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -21,7 +22,7 @@ export default async function HomePage() {
         <InformationCard
           key={`openai-infocard`}
           title={"Open AI"}
-          value={"12"}
+          value={numberOfModelsOpenAI.toString()}
           icon={<CpuChipIcon className="h-5 w-5 text-gray-700" />}
         />
         {/* <InformationCard
