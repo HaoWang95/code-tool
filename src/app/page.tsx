@@ -16,7 +16,7 @@ export default function Home() {
         <h1 className="text-5xl font-bold mb-4">{AppTitle}</h1>
         <p className="text-lg mb-8">{AppDescription}</p>
         <Link
-          href={"/models"}
+          href={"/home"}
           className="bg-white hover:bg-gray-100 text-teal-600 font-bold py-2 px-4 rounded"
         >
           Get Started

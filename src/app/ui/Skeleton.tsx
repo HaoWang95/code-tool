@@ -104,7 +104,9 @@ export const BreadScrumbSkeleton = () => {
                 "animate-pulse" // Apply pulse animation to simulate loading
               )}
             >
-              <div className="w-20 h-5 bg-gray-200 rounded-full">loading...</div>{" "}
+              <div className="w-20 h-5 bg-gray-200 rounded-full">
+                loading...
+              </div>{" "}
             </li>
             {index < dummyBreadScrumb.length - 1 ? (
               <span className="mx-3 inline-block">/</span>
@@ -115,3 +117,13 @@ export const BreadScrumbSkeleton = () => {
     </nav>
   );
 };
+
+export const InformationCardSkeleton = () => (
+  <div className="rounded-xl bg-gray-50 p-2 shadow-sm animate-pulse">
+    <div className="flex p-4">
+      <div className="h-5 w-5 bg-gray-300 rounded-full"></div>{" "}{/* Placeholder for icon */}
+      <div className="ml-2 text-sm font-medium bg-gray-300 h-5 w-20 rounded"></div>{" "}{/* Placeholder for title */}
+    </div>
+    <div className="bg-gray-300 px-4 py-8 text-center rounded-lg h-10"></div>{" "}{/* Placeholder for value */}
+  </div>
+);

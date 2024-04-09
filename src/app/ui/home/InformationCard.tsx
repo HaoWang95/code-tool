@@ -1,15 +1,26 @@
 import { ReactNode } from "react";
 import { lusitana } from "../font";
+import { bedrockClientListModels, openAIListModels } from "@/app/lib/action";
 
-export function InformationCard({
+export async function InformationCard({
   title,
-  value,
   icon,
 }: {
   title: string;
-  value: string;
+  // value: string;
   icon?: ReactNode;
 }) {
+  const numberOfModels = async () => {
+    if (title === "AWS") {
+      const { numberOfModels } = await bedrockClientListModels();
+      return numberOfModels;
+    }
+    if (title === "OpenAI") {
+      const { numberOfModelsOpenAI } = await openAIListModels();
+      return numberOfModelsOpenAI;
+    }
+  };
+  const value = await numberOfModels();
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <div className="flex p-4">
