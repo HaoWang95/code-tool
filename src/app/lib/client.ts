@@ -20,7 +20,7 @@ const GlobalBedrockRuntimeClient = new BedrockRuntimeClient({
 });
 
 const GlobalOpenAIClient = new OpenAI({
-  apiKey: process.env.OPENAI_SECRET_KEY,
+  apiKey: process.env.OPENAI_SECRET_KEY || "", dangerouslyAllowBrowser: true
 });
 
 export { GlobalBedrockClient, GlobalBedrockRuntimeClient, GlobalOpenAIClient };

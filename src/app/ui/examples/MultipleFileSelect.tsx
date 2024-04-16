@@ -43,15 +43,11 @@ const MultipleFileInput: React.FC = () => {
 
   const isDisabled = fileInputs.length === 1 && fileInputs[0].file === null;
 
-  useEffect(() => {
-    console.log(`fileInputString => ${fileInputString}`);
-  }, [fileInputString]);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => {
-    console.log("file on change!");
     const file = event.target.files ? event.target.files[0] : null;
     if (file) {
       dispatch({ type: "ADD_FILE", id, file });
@@ -86,11 +82,6 @@ const MultipleFileInput: React.FC = () => {
         setLoading(false);
       });
     }
-    // Simulate a submission process
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   console.log("Files submitted");
-    // }, 2000);
   };
 
   return (
